@@ -1,0 +1,61 @@
+.ui-draggable { padding:10px; margin: 10px;border:2px solid black;}
+.ui-draggable-dragging { border: 1px solid gray; padding: 0.3em; background: #eee; }
+  .list{display:block;padding:10px;margin: 10px;border:2px solid black;width:50px;}
+  .block{padding: 10px; display:inline; cursor: move}
+ 
+#init{
+display: inline;
+} 
+body{
+	background-color: #424242;
+	color: #eee;
+	font-size: 14px;
+	font-family: "Verdana",Geneva,sans-serif;
+	margin: 0;
+	padding: 0;
+}
+.colorRed{
+	border-color: red;
+	border-width: 10px;
+	padding:0px;
+	border-radius: 5px;
+}
+.colorBlue{
+	border-color: blue;
+	border-width: 10px;
+	padding:0px;
+	border-radius: 5px;
+}
+.colorGreen{
+	border-color: green;
+	border-width: 10px;
+	padding:0px;
+	border-radius: 5px;
+}
+.divScroll
+{
+    width:80%;
+    height:180px;
+    overflow-x:scroll;
+    white-space:nowrap;
+	
+}  
+
+
+::-webkit-scrollbar {
+    width:12px;
+	height:30px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 16px rgba(0,0,0,0.3); 
+    border-radius: 30px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 30px;
+    -webkit-box-shadow: inset 0 0 16px rgba(0,0,0,0.5); 
+}
+
+
+ 
