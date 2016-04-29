@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 
+//Set all elements with init id with block class drag enabled
 	var id = [];
 $( "#init .block" ).draggable({
   helper: "clone",
@@ -9,6 +10,7 @@ $( "#init .block" ).draggable({
   }
 });
 
+//Connect empty sorted lists with draggable elements
 $(".list").sortable({
   connectWith: ".list",
   receive: function(event,ui) {
@@ -20,7 +22,8 @@ $(".list").sortable({
 		  $(newItem).attr({style: "content:url(images/triangle.jpg)" });
 	  if(id == "circle")
 		  $(newItem).attr({style: "content:url(images/circle.jpg)" });	  
-
+    
+	var colorClass = $("input:radio[name='color']:checked").val();
 	console.log(colorClass);
 	$(newItem).addClass(colorClass);
   },
@@ -30,7 +33,6 @@ $(".list").sortable({
   }
 });
 $( "#click" ).click(function() {
-	//alert("click");
   launch();
 });
 

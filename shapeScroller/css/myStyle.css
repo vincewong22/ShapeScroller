@@ -1,7 +1,24 @@
-.ui-draggable { padding:10px; margin: 10px;border:2px solid black;}
-.ui-draggable-dragging { border: 1px solid gray; padding: 0.3em; background: #eee; }
-  .list{display:block;padding:10px;margin: 10px;border:2px solid black;width:50px;}
-  .block{padding: 10px; display:inline; cursor: move}
+.ui-draggable{ 
+padding:10px; 
+margin: 10px;
+border:2px solid black;
+}
+.ui-draggable-dragging{ 
+border: 1px solid gray;
+ padding: 0.3em;
+ background: #eee; 
+}
+  .list{
+	  display:block;
+	  padding:10px;margin: 10px;
+	  border:2px solid black;
+	  width:50px;
+	  }
+  .block{
+	  padding: 10px;
+	  display:inline;
+	  cursor: move
+	  }
  
 #init{
 display: inline;
@@ -40,7 +57,12 @@ body{
     white-space:nowrap;
 	
 }  
-
+.formGroup{
+display: inline;
+}
+.circleButton{
+	content:url("images/box.jpg");
+}
 
 ::-webkit-scrollbar {
     width:12px;

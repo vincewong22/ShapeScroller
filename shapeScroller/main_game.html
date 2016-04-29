@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="" ng-init="color='yellow'">
+<html lang="en" ng-app="" ng-init="color='colorRed'">
 <head>
 <meta charset="UTF-8" />
 <title></title>
@@ -26,30 +26,30 @@
 <div id="shapelist1" class="list divScroll "></div>
 <div id="shapelist2" class="list divScroll "></div>
 
-<div id="output0">output</div>
-<div id="output1">output</div>
-<div id="output2">output</div>
 
-<div id="click">click here</div>
+
+
 <br>
 <div id="init">
 
-  <div id="circle" class="block">Circle</div>
-  <div id="box" class="block">Box</div>
-  <div id="triangle" class="block">Triangle</div>
+  <div id="circle" class="block {{color}}"><img src="images/circle.jpg"></div>
+  <div id="box" class="block {{color}}"><img src="images/box.jpg"></div>
+  <div id="triangle" class="block {{color}}"><img src="images/triangle.jpg"></div>
   
 </div>
-<!-- RADIO BUTTONS -->
-    
-    <div class="form-group">
-	<input type="radio" name="chickenEgg" value="colorRed">Red
-        <input type="radio" name="chickenEgg" value="colorGreen">Green
-		<input type="radio" name="chickenEgg" value="colorBlue">Blue
-        </div>
-    </div>
-    
-   
 
+    
+    <div class="formGroup">
+	<input type="radio" name="color" value="colorRed"  ng-model="color" checked="checked">Red
+        <input type="radio" name="color" value="colorGreen"ng-model="color">Green
+		<input type="radio" name="color" value="colorBlue"ng-model="color">Blue
+        </div>
+    
+    
+<div id="output0">output</div>
+<div id="output1">output</div>
+<div id="output2">output</div>
+<div id="click">click here</div>
 	
 </body>
 </html>
