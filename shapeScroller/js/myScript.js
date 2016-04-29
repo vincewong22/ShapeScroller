@@ -22,8 +22,9 @@ $(".list").sortable({
 		  $(newItem).attr({style: "content:url(images/triangle.jpg)" });
 	  if(id == "circle")
 		  $(newItem).attr({style: "content:url(images/circle.jpg)" });	  
-    
-	var colorClass = $("input:radio[name='color']:checked").val();
+	 //so existing game pieces colors don't get overridden
+    if(($(this).hasClass("colorBlue") ||$(this).hasClass("colorRed")||$(this).hasClass("colorGreen")))
+		var colorClass = $("input:radio[name='color']:checked").val();
 	console.log(colorClass);
 	$(newItem).addClass(colorClass);
   },

@@ -15,9 +15,7 @@ border: 1px solid gray;
 	  width:50px;
 	  }
   .block{
-	  padding: 10px;
 	  display:inline;
-	  cursor: move
 	  }
  
 #init{
@@ -32,20 +30,20 @@ body{
 	padding: 0;
 }
 .colorRed{
-	border-color: red;
-	border-width: 10px;
+	border-color: #E53935;
+	border-width: 5px;
 	padding:0px;
 	border-radius: 5px;
 }
 .colorBlue{
-	border-color: blue;
-	border-width: 10px;
+	border-color: #2196F3;
+	border-width: 5px;
 	padding:0px;
 	border-radius: 5px;
 }
 .colorGreen{
-	border-color: green;
-	border-width: 10px;
+	border-color: #4CAF50;
+	border-width: 5px;
 	padding:0px;
 	border-radius: 5px;
 }
