@@ -1,25 +1,31 @@
 .ui-draggable{ 
-padding:10px; 
+padding:5px; 
 margin: 10px;
-border:2px solid black;
+border:90px solid black;
 }
 .ui-draggable-dragging{ 
-border: 1px solid gray;
- padding: 0.3em;
- background: #eee; 
+border: 5px solid black;
+ width:64px;
+	height:64px;
 }
-  .list{
-	  display:block;
-	  padding:10px;margin: 10px;
-	  border:2px solid black;
-	  width:50px;
-	  }
-  .block{
+.list{
+display:block;
+padding:10px;margin: 10px;
+border:2px solid black;
+width:50px;
+}
+.block{
 	  display:inline;
-	  }
- 
+}
+#droppable {
+border: 2px solid;
+	width:90px;
+	height:90px;
+}
+
 #init{
-display: inline;
+text-align:center;
+
 } 
 body{
 	background-color: #424242;
@@ -30,40 +36,38 @@ body{
 	padding: 0;
 }
 .colorRed{
+	
 	border-color: #E53935;
 	border-width: 5px;
 	padding:0px;
-	border-radius: 5px;
+	
 }
 .colorBlue{
 	border-color: #2196F3;
 	border-width: 5px;
 	padding:0px;
-	border-radius: 5px;
 }
 .colorGreen{
 	border-color: #4CAF50;
 	border-width: 5px;
 	padding:0px;
-	border-radius: 5px;
+	
 }
-.divScroll
-{
-    width:80%;
+.divScroll{
+    width:94%;
     height:120px;
     overflow-x:scroll;
 	overflow-y: hidden;
-    white-space:nowrap;
-	
+    white-space:nowrap;	
 }  
 .formGroup{
-display: inline;
+	text-align:center;
 }
 
 
 ::-webkit-scrollbar {
     width:12px;
-	height:2px;
+	height:8px;
 	-webkit-overflow-scrolling: touch;
 }
  
