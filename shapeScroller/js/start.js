@@ -1,10 +1,12 @@
+
+
 $(document).ready(function () {
+
 //Set all elements with init id with block class drag enabled
     var id = [];
     var level_shapes = [[], [], []], user_shapes = [[], [], []];
 
-    $("#init .block").draggable({
-        helper: "clone",
+    $("#init .block").draggable({ helper: "clone",
         connectToSortable: ".list",
         drop: function (event, ui) {
 
@@ -85,4 +87,5 @@ $(document).ready(function () {
 //        $('#output2').html("3:"+shapelist2.toString());
         return shapeArray;
     }
+    startTimer();
 });//end of ready
