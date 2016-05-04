@@ -1,4 +1,9 @@
-.ui-draggable{ 
+body{
+	min-width:480px; /* suppose you want minimun width of 1000px */
+	width: auto !important;  /* Firefox will set width as auto */
+	width:480px;             /* As IE ignores !important it will set width as 1000px; */
+}
+.ui-draggable{
 padding:5px; 
 margin: 10px;
 border:90px solid black;
@@ -19,11 +24,14 @@ width:50px;
 
 }
 .verify{
-	display:inline-block;
-	position: relative;
+
+
+	position:relative;
+
+
 }
 .trash{
-	text-align: center;
+	vertical-align: -210%;
 	width:90px;
 	height:90px;
 	overflow-x:hidden;
@@ -31,6 +39,8 @@ width:50px;
 	white-space:nowrap;
 	display:inline-block;
 	position: relative;
+	background-image: url("../images/trash.png");
+	opacity: 50;
 }
 #init{
 text-align:center;

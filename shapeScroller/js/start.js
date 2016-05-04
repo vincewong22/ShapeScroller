@@ -45,13 +45,6 @@ $(document).ready(function () {
     $("#start_click").click(function () {
         level_shapes = getListContent();
         localStorage.setItem("level_shapes",level_shapes.toString());
-        //document.cookie="level="+level_shapes.toString();
-        //var json_level_shapes = JSON.stringify(arr);
-        //createCookie('mycookie', json_str);
-        //console.log("hello");
-        //console.log(level_shapes[0].toString());
-        //console.log(level_shapes[1].toString());
-        //console.log(level_shapes[2].toString());
         window.location.href = "input.html";
     });
     $("#input_click").click(function () {
@@ -63,23 +56,8 @@ $(document).ready(function () {
             alert("match");
         else
             alert(level_shapes_str+" no match!");
-
-        updateDebug();
-        // window.location.href = "input.html";
     });
 
-    function updateDebug() {
-        $('#output3').html("1:" + user_shapes[0].toString());
-        $('#output4').html("2:" + user_shapes[1].toString());
-        $('#output5').html("3:" + user_shapes[2].toString());
-        $('#output0').html("1:" + level_shapes[0].toString());
-        $('#output1').html("2:" + level_shapes[1].toString());
-        $('#output2').html("3:" + level_shapes[2].toString());
-
-        console.log(user_shapes[0].toString());
-        console.log(user_shapes[1].toString());
-        console.log(user_shapes[2].toString());
-    }
 
 
 //gets the shapes from the 3 lists
