@@ -16,16 +16,24 @@ width:50px;
 }
 .block{
 	  display:inline;
+
 }
-#droppable {
-border: 2px solid;
+.verify{
+	display:inline-block;
+	position: relative;
+}
+.trash{
+	text-align: center;
 	width:90px;
 	height:90px;
+	overflow-x:hidden;
+	overflow-y: hidden;
+	white-space:nowrap;
+	display:inline-block;
+	position: relative;
 }
-
 #init{
 text-align:center;
-
 } 
 body{
 	background-color: #424242;

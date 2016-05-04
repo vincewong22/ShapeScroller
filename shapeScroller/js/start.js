@@ -12,42 +12,40 @@ $(document).ready(function () {
     });
 
 //Connect empty sorted lists with draggable elements
+    var removeIntent = false;
     $(".list").sortable({
+
         connectWith: ".list",
-        receive: function (event, ui) {
+        receive: function(event,ui) {
             var id = ui.item.attr("id");
             console.log(id);
-            if (id == "box")
-                $(newItem).attr({style: "content:url(images/box.jpg)"});
-            if (id == "triangle")
-                $(newItem).attr({style: "content:url(images/triangle.jpg)"});
-            if (id == "circle")
-                $(newItem).attr({style: "content:url(images/circle.jpg)"});
+            if(id == "box")
+                $(newItem).attr({style: "content:url(images/box.jpg)" });
+            if(id == "triangle")
+                $(newItem).attr({style: "content:url(images/triangle.jpg)" });
+            if(id == "circle")
+                $(newItem).attr({style: "content:url(images/circle.jpg)" });
             //check to see if your dragging out a new shape, if so, then give it a color, if check was not here
             //old shapes would have color overridden
-            if (($(this).hasClass("colorBlue") || $(this).hasClass("colorRed") || $(this).hasClass("colorGreen")))
+            if(($(this).hasClass("colorBlue") ||$(this).hasClass("colorRed")||$(this).hasClass("colorGreen")))
                 var colorClass = $("input:radio[name='color']:checked").val();
             $(newItem).addClass(colorClass);
+
         },
-        //out: function(event, ui){
-        //    ui.item.remove();
-        //},
-        //over: function(event, ui){
-        //    ui.item.remove();
-        //},
         beforeStop: function (event, ui) {
-            newItem = ui.item;
+            console.log(removeIntent);
+                newItem = ui.item;
         }
     });
-    $( "#droppable" ).droppable({
-        over: function( event, ui ) {
-            ui.item.remove();
-        }
+//button that checks the
+    $( "#click" ).click(function() {
+        getListContent();
     });
 //button that checks the
     $("#start_click").click(function () {
         level_shapes = getListContent();
-        document.cookie="level="+level_shapes.toString();
+        localStorage.setItem("level_shapes",level_shapes.toString());
+        //document.cookie="level="+level_shapes.toString();
         //var json_level_shapes = JSON.stringify(arr);
         //createCookie('mycookie', json_str);
         //console.log("hello");
@@ -59,11 +57,12 @@ $(document).ready(function () {
     $("#input_click").click(function () {
         user_shapes = getListContent();
         //alert(document.cookie);
-        var str_me = document.cookie;
-        if(("level="+user_shapes.toString()) == str_me)
+
+        var level_shapes_str = localStorage.getItem("level_shapes");
+        if((user_shapes.toString()) == level_shapes_str)
             alert("match");
         else
-            alert(str_me+" no match!");
+            alert(level_shapes_str+" no match!");
 
         updateDebug();
         // window.location.href = "input.html";

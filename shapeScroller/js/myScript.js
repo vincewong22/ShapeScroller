@@ -10,8 +10,16 @@ $( "#init .block" ).draggable({
 });
 
 //Connect empty sorted lists with draggable elements
+	var removeIntent = false;
 $(".list").sortable({
+
   connectWith: ".list",
+	over: function(event,ui){
+		removeIntent = false;
+	},
+	out: function(event,ui){
+		removeIntent = true;
+	},
   receive: function(event,ui) {
 	  var id = ui.item.attr("id");
 	  console.log(id);
@@ -28,8 +36,9 @@ $(".list").sortable({
 	$(newItem).addClass(colorClass);
   },
   beforeStop: function (event, ui) { 
-      newItem = ui.item;
-	  
+      //newItem = ui.item;
+	  if(removeIntent == true)
+	  ui.item.remove(newItem);
   }
 });
 //button that checks the 
