@@ -1,7 +1,7 @@
 function startTimer(){
 var countdown =  $("#countdown").countdown360({
     radius      : 60,
-    seconds     : 2,
+    seconds     : 10,
     fontColor   : '#FFFFFF',
     autostart   : false,
     onComplete : function() {window.location = "input.html"}

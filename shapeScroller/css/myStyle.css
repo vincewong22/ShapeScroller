@@ -23,13 +23,14 @@ width:50px;
 	  display:inline;
 
 }
-.verify{
+.verify {
 
-
-	position:relative;
-
-
+	position: relative;
 }
+#start_click {
+display:inline;
+}
+
 .trash{
 	vertical-align: -210%;
 	width:90px;
