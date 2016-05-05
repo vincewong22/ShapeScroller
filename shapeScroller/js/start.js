@@ -2,7 +2,7 @@ var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
 
 $(document).ready(function () {
-    //generateBoard(3);
+    generateBoard(2);
 //Set all elements with init id with block class drag enabled
     init();
 //button that checks the
@@ -17,19 +17,19 @@ $(document).ready(function () {
     });
 //button that checks the
     $("#start_click").click(function () {
-        level_shapes = getListContent();
+        level_shapes = getUserContent(0);
         localStorage.setItem("level_shapes",level_shapes.toString());
-        console.log("here");
+
         window.location.href = "input.html";
     });
     $("#input_click").click(function () {
-        user_shapes = getListContent();
+        user_shapes = getUserContent(4);
         //alert(document.cookie);
 
         var level_shapes_str = localStorage.getItem("level_shapes");
         console.log(user_shapes.toString());
         if((user_shapes.toString()) == level_shapes_str)
-            alert(user_shapes.toString()+"match");
+            alert(level_shapes_str+"  mAtCh!"+user_shapes.toString());
         else
             alert(level_shapes_str+" no match!"+user_shapes.toString());
     });
@@ -56,8 +56,34 @@ $(document).ready(function () {
         }
         return shapeArray;
     }
+
+    //gets the shapes from the 3 lists
+    function getUserContent(offset) {
+        var myClass;
+        var shapelist0 = [], shapelist1 = [], shapelist2 = [];
+        var shapeArray = [shapelist0, shapelist1, shapelist2];
+        for (i = 0+offset,j=0; i < shapeArray.length+offset; i++,j++) {
+            var target = "#shapelist" + i + " img";
+            console.log(target);
+            $(target).each(function () {
+                if ($(this).hasClass("colorRed"))
+                    myClass = "_red"
+                if ($(this).hasClass("colorGreen"))
+                    myClass = "_green"
+                if ($(this).hasClass("colorBlue"))
+                    myClass = "_blue"
+                console.log(this.id + myClass);
+                shapeArray[j].push(this.id + myClass);
+            });
+
+        }
+        return shapeArray;
+    }
     startTimer();
 });//end of ready
+
+
+
 
 function startTimer(){
     var countdown =  $("#countdown").countdown360({
@@ -113,26 +139,22 @@ function decideColor(){
 }
 
 function generateBoard(level){
-    var row,shape,styleShape,source,classa;
+    var row,shape,styleShape,source,shapeClass;
     for(i=0; i<level; i++) {
         row = "shapelist"+decideRow();
         shape = decideShape();
         path = "images/"+shape+".jpg";
         source="images/circle.jpg";
-        console.log(row+" "+shape+" "+path);
-        classa = "block "+decideColor()+" ui-draggable";
-
+        shapeClass = "block "+decideColor()+" ui-draggable";
 
 
         var img = $('<img />', {
             id: shape,
             src: path,
-            class: classa
+            class: shapeClass
         });
-
-
         img.appendTo($("#"+row));
-        //$("#"+row).append("<div id=shape class='block colorRed ui-draggable' style=content:url(''+styleShape)><img src=''+source></div>");
+
     }
 }
 function sortList(){
