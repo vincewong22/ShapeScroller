@@ -34,30 +34,9 @@ $(document).ready(function () {
             alert(level_shapes_str+" no match!"+user_shapes.toString());
     });
 
-//gets the shapes from the 3 lists
-    function getListContent() {
-        var myClass;
-        var shapelist0 = [], shapelist1 = [], shapelist2 = [];
-        var shapeArray = [shapelist0, shapelist1, shapelist2];
-        for (i = 0; i < shapeArray.length; i++) {
-            var target = "#shapelist" + i + " img";
-            console.log(target);
-            $(target).each(function () {
-                if ($(this).hasClass("colorRed"))
-                    myClass = "_red"
-                if ($(this).hasClass("colorGreen"))
-                    myClass = "_green"
-                if ($(this).hasClass("colorBlue"))
-                    myClass = "_blue"
-                console.log(this.id + myClass);
-                shapeArray[i].push(this.id + myClass);
-            });
-
-        }
-        return shapeArray;
-    }
 
     //gets the shapes from the 3 lists
+    //offset for shapelists 0,1,2 and shaplists 4,5,6
     function getUserContent(offset) {
         var myClass;
         var shapelist0 = [], shapelist1 = [], shapelist2 = [];
@@ -81,9 +60,6 @@ $(document).ready(function () {
     }
     startTimer();
 });//end of ready
-
-
-
 
 function startTimer(){
     var countdown =  $("#countdown").countdown360({
@@ -147,16 +123,15 @@ function generateBoard(level){
         source="images/circle.jpg";
         shapeClass = "block "+decideColor()+" ui-draggable";
 
-
         var img = $('<img />', {
             id: shape,
             src: path,
             class: shapeClass
         });
         img.appendTo($("#"+row));
-
     }
 }
+
 function sortList(){
     //Connect empty sorted lists with draggable elements
     $(".list").sortable({
