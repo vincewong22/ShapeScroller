@@ -30,6 +30,21 @@ width:50px;
 	  display:inline;
 
 }
+.one{
+	background-image: url("../images/one.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.two{
+	background-image: url("../images/two.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.three{
+	background-image: url("../images/three.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
 .verify {
 
 	position: relative;

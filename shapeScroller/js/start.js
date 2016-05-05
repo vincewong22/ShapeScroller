@@ -20,7 +20,7 @@ $(document).ready(function () {
     $( "#reset" ).click(function() {
         console.log("reset");
         localStorage.setItem("level",1);
-        $("#levelCounter").text("hello level: "+level);
+        $("#levelCounter").text("resetting!!!!: "+level);
         window.location.href = "start.html";
     });
 //button that checks the
