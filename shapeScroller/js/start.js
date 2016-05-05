@@ -4,6 +4,9 @@ var level=1;
 
 $(document).ready(function () {
     level = localStorage.getItem("level",level);
+    if(level == null){
+        localStorage.setItem("level",1);
+    }
     $("#levelCounter").text("Level: "+level);
     var difficulty = level;
     generateBoard(level);
