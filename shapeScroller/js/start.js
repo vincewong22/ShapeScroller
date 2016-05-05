@@ -4,7 +4,7 @@ var level=1;
 
 $(document).ready(function () {
     level = localStorage.getItem("level",level);
-    $("#levelCounter").text("hello level: "+level);
+    $("#levelCounter").text("Level: "+level);
     var difficulty = level;
     generateBoard(level);
 //Set all elements with init id with block class drag enabled
@@ -41,13 +41,15 @@ $(document).ready(function () {
             console.log("level: "+level);
             window.location.href = "start.html";
         }
-        else
-            alert(level_shapes_str+" no match!"+"\n row1="+user_shapes[0].toString()+"\nrow2="+user_shapes[1].toString()+"\nrow3="+user_shapes[2].toString());
+        else {
+            var helpTip = localStorage.getItem("level shapes user");
+            alert(helpTip +"\n Sorry, no match, try inputing the above!");
+        }
     });
     window.loadInput = function(){
         level_shapes = getUserContent(0);
         localStorage.setItem("level_shapes",level_shapes.toString());
-
+        localStorage.setItem("level shapes user","row1="+level_shapes[0].toString()+"\nrow2="+level_shapes[1].toString()+"\nrow3="+level_shapes[2].toString())
         window.location.href = "input.html";
     }
 
@@ -105,8 +107,8 @@ function init(){
     sortList();
 }
 
-function decideShape(){
-    var shapeNum = Math.floor( Math.random() * 3 );
+function decideShape(numShapes){
+    var shapeNum = Math.floor( Math.random() * numShapes );
     switch(shapeNum){
         case 0:
             return "circle";
@@ -139,7 +141,7 @@ function generateBoard(level){
     var row,shape,styleShape,source,shapeClass;
     for(i=0; i<level; i++) {
         row = "shapelist"+decideRow();
-        shape = decideShape();
+        shape = decideShape(decideNumShapes());
         path = "images/"+shape+".jpg";
         source="images/circle.jpg";
         shapeClass = "block "+decideColor(decideNumColors())+" ui-draggable";
@@ -155,11 +157,17 @@ function generateBoard(level){
 
 function decideNumColors(){
     console.log("level from num colors:"+level);
-    if(level > 3)
+    if(level > 5)
     return 2;
 return 0;
 }
 function decideNumShapes(){
+    console.log("level from num shapes:"+level);
+    if(level > 3)
+        return 2;
+    if(level > 4)
+        return 3;
+    return 1;
 }
 function sortList(){
     //Connect empty sorted lists with draggable elements
