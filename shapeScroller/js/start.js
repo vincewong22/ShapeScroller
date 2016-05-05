@@ -2,11 +2,16 @@ var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
 
 $(document).ready(function () {
+    generateBoard(7);
 //Set all elements with init id with block class drag enabled
     init();
 //button that checks the
     $( "#click" ).click(function() {
         getListContent();
+    });
+
+    $( "#check" ).click(function() {
+        console.log(decideShape());
     });
 //button that checks the
     $("#start_click").click(function () {
@@ -45,7 +50,7 @@ $(document).ready(function () {
         }
         return shapeArray;
     }
-    startTimer();
+    //startTimer();
 });//end of ready
 
 function startTimer(){
@@ -71,6 +76,37 @@ function init(){
     sortList();
 }
 
+function decideShape(){
+    var shapeNum = Math.floor( Math.random() * 3 );
+    switch(shapeNum){
+        case 0:
+            return "circle";
+            break;
+        case 1:
+            return "triangle";
+            break;
+        default:
+            return "box";
+    }
+}
+function decideRow(){
+    return Math.floor( Math.random() * 3 );
+}
+
+function generateBoard(level){
+    var row,shape,styleShape,source;
+    for(i=0; i<level; i++) {
+        row = "shapelist"+decideRow();
+        shape = decideShape();
+        path = "images/"+shape+".jpg";
+        styleShape=encodeURIComponent("images/'+shape+'.jpg");
+        source="images&#47;circle.jpg";
+        console.log(row+" "+shape+" "+path);
+        //d = document.createElement('div');
+       // $(d).attr('id',shape).appendTo($())
+        $("#"+row).append("<div id=shape class='block colorRed ui-draggable' style=content:url(''+styleShape)><img src='images/circle.jpg'></div>");
+    }
+}
 function sortList(){
     //Connect empty sorted lists with draggable elements
     var removeIntent = false;
