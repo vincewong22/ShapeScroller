@@ -1,26 +1,32 @@
 var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
+var level=1;
 
 $(document).ready(function () {
-    generateBoard(2);
+    level = localStorage.getItem("level",level);
+    $("#levelCounter").text("hello level: "+level);
+    var difficulty = level;
+    generateBoard(level);
 //Set all elements with init id with block class drag enabled
     init();
 //button that checks the
     $( "#click" ).click(function() {
         getListContent();
-
-
     });
 
-    $( "#check" ).click(function() {
-        console.log(decideShape());
+    $( "#reset" ).click(function() {
+        console.log("reset");
+        localStorage.setItem("level",1);
+        $("#levelCounter").text("hello level: "+level);
+        window.location.href = "start.html";
     });
 //button that checks the
     $("#start_click").click(function () {
-        level_shapes = getUserContent(0);
-        localStorage.setItem("level_shapes",level_shapes.toString());
-
-        window.location.href = "input.html";
+        loadInput();
+        //level_shapes = getUserContent(0);
+        //localStorage.setItem("level_shapes",level_shapes.toString());
+        //
+        //window.location.href = "input.html";
     });
     $("#input_click").click(function () {
         user_shapes = getUserContent(4);
@@ -28,12 +34,22 @@ $(document).ready(function () {
 
         var level_shapes_str = localStorage.getItem("level_shapes");
         console.log(user_shapes.toString());
-        if((user_shapes.toString()) == level_shapes_str)
-            alert(level_shapes_str+"  mAtCh!"+user_shapes.toString());
+        if((user_shapes.toString()) == level_shapes_str){
+            //alert(level_shapes_str+"  mAtCh!"+user_shapes.toString());
+            level++;
+            localStorage.setItem("level",level);
+            console.log("level: "+level);
+            window.location.href = "start.html";
+        }
         else
-            alert(level_shapes_str+" no match!"+user_shapes.toString());
+            alert(level_shapes_str+" no match!"+"\n row1="+user_shapes[0].toString()+"\nrow2="+user_shapes[1].toString()+"\nrow3="+user_shapes[2].toString());
     });
+    window.loadInput = function(){
+        level_shapes = getUserContent(0);
+        localStorage.setItem("level_shapes",level_shapes.toString());
 
+        window.location.href = "input.html";
+    }
 
     //gets the shapes from the 3 lists
     //offset for shapelists 0,1,2 and shaplists 4,5,6
@@ -62,12 +78,17 @@ $(document).ready(function () {
 });//end of ready
 
 function startTimer(){
+
     var countdown =  $("#countdown").countdown360({
-        radius      : 60,
+        radius      : 90,
         seconds     : 10,
         fontColor   : '#FFFFFF',
         autostart   : false,
-        onComplete : function() {window.location = "input.html"}
+        onComplete : function() {window.loadInput()
+
+           // window.location = "input.html"
+
+        }
         <!--onComplete  : function() { console.log('done') } -->
     });
     countdown.start();
@@ -100,8 +121,8 @@ function decideShape(){
 function decideRow(){
     return Math.floor( (Math.random() * 3) );
 }
-function decideColor(){
-    var shapeNum = Math.floor( Math.random() * 3 );
+function decideColor(numColors){
+    var shapeNum = Math.floor( Math.random() * numColors);
     switch(shapeNum){
         case 0:
             return "colorRed";
@@ -121,7 +142,7 @@ function generateBoard(level){
         shape = decideShape();
         path = "images/"+shape+".jpg";
         source="images/circle.jpg";
-        shapeClass = "block "+decideColor()+" ui-draggable";
+        shapeClass = "block "+decideColor(decideNumColors())+" ui-draggable";
 
         var img = $('<img />', {
             id: shape,
@@ -132,6 +153,14 @@ function generateBoard(level){
     }
 }
 
+function decideNumColors(){
+    console.log("level from num colors:"+level);
+    if(level > 3)
+    return 2;
+return 0;
+}
+function decideNumShapes(){
+}
 function sortList(){
     //Connect empty sorted lists with draggable elements
     $(".list").sortable({
