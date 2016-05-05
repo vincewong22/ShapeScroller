@@ -2,7 +2,7 @@ var id = [];
 var level_shapes = [[], [], []], user_shapes = [[], [], []];
 
 $(document).ready(function () {
-    generateBoard(7);
+    generateBoard(1);
 //Set all elements with init id with block class drag enabled
     init();
 //button that checks the
@@ -32,6 +32,7 @@ $(document).ready(function () {
 
 //gets the shapes from the 3 lists
     function getListContent() {
+        var myClass;
         var shapelist0 = [], shapelist1 = [], shapelist2 = [];
         var shapeArray = [shapelist0, shapelist1, shapelist2];
         for (i = 0; i < shapeArray.length; i++) {
@@ -50,7 +51,7 @@ $(document).ready(function () {
         }
         return shapeArray;
     }
-    //startTimer();
+    startTimer();
 });//end of ready
 
 function startTimer(){
@@ -90,21 +91,47 @@ function decideShape(){
     }
 }
 function decideRow(){
-    return Math.floor( Math.random() * 3 );
+    return Math.floor( (Math.random() * 3) );
+}
+function decideColor(){
+    var shapeNum = Math.floor( Math.random() * 3 );
+    switch(shapeNum){
+        case 0:
+            return "colorRed";
+            break;
+        case 1:
+            return "colorBlue";
+            break;
+        default:
+            return "colorGreen";
+    }
 }
 
 function generateBoard(level){
-    var row,shape,styleShape,source;
+    var row,shape,styleShape,source,classa;
     for(i=0; i<level; i++) {
         row = "shapelist"+decideRow();
         shape = decideShape();
         path = "images/"+shape+".jpg";
-        styleShape=encodeURIComponent("images/'+shape+'.jpg");
-        source="images&#47;circle.jpg";
+        source="images/circle.jpg";
         console.log(row+" "+shape+" "+path);
-        //d = document.createElement('div');
+        classa = "block "+decideColor()+" ui-draggable";
+       // d = document.createElement('div');
+       // i = document.createElement('img');
+       // i.src = source;
+        //d.appendChild(i);
        // $(d).attr('id',shape).appendTo($())
-        $("#"+row).append("<div id=shape class='block colorRed ui-draggable' style=content:url(''+styleShape)><img src='images/circle.jpg'></div>");
+
+
+        var img = $('<img />', {
+            id: shape,
+            src: path,
+            class: classa
+        });
+
+
+        img.appendTo($("#"+row));
+        //$("#"+row).append("<div id=shape class='block colorRed ui-draggable' style=content:url(''+styleShape)><img src=''+source></div>");
     }
 }
 function sortList(){
